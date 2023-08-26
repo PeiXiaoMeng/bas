@@ -1,12 +1,24 @@
 import { PrismaClient } from '@prisma/client';
-import { products } from '../products';
+import { areas, fields, conditions } from '../surface';
 
 const prisma = new PrismaClient();
 
 async function main() {
-  for (const product of products) {
-    await prisma.product.create({
-      data: product,
+  for (const area of areas) {
+    await prisma.area.create({
+      data: area,
+    });
+  }
+
+  for (const field of fields) {
+    await prisma.field.create({
+      data: field,
+    });
+  }
+
+  for (const condition of conditions) {
+    await prisma.condition.create({
+      data: condition,
     });
   }
 }
